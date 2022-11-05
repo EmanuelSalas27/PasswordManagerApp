@@ -42,9 +42,13 @@ def passwords_window():
     title2 = tkinter.Label(text='Passwords Saved', bg=PRIMARY_COLOR, fg='White', font=('', '24'))
     title2.pack()
 
-    file = open('data.txt', 'r')
-    data = file.read()
+    try:
+        file = open('data.txt', 'r')
+    except FileNotFoundError:
+        open('data.txt', 'w')
+        file = open('data.txt', 'r')
 
+    data = file.read()
     label5 = tkinter.Label(text=data, bg=PRIMARY_COLOR, fg='White', font=('', '10'), pady=10)
     label5.pack()
 
